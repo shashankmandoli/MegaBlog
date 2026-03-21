@@ -1,15 +1,16 @@
 import envConfig from "../../config/envConfig";
-import { Client, ID, Databases, Storage, Query } from "appwrite";
+import { Client, ID, Databases, Storage, Query, Account } from "appwrite";
 
 export class Service{
     client = new Client();
+    account;
     databases;
     bucket;
 
     constructor(){
         this.client
-            .setEndpoint(envConfigonfig.appwriteUrl)
-            .setProject(envConfigonfig.appwriteProjectId);
+            .setEndpoint(envConfig.appwriteUrl)
+            .setProject(envConfig.appwriteProjectId);
         this.account = new Account(this.client);
         this.databases = new Databases(this.client);
         this.bucket = new Storage(this.client);
